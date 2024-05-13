@@ -18,7 +18,13 @@ public class HomePage extends WebDrverUtility {
 		
 
 	}
+	@FindBy(linkText = "Products")
+	private WebElement productLink;
 	
+	public WebElement getProductLink() {
+		return productLink;
+	}
+
 	@FindBy(linkText = "Organizations")
 	private WebElement orgLink;
 	
