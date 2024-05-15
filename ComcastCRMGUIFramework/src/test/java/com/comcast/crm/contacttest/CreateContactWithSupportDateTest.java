@@ -38,7 +38,7 @@ public class CreateContactWithSupportDateTest extends BaseClass {
 				
    
 		//read data from excel
-		String lastName=eLib.getDataFromExcel("contact",7,5)+jLib.getRandomNumber();
+		String lastName=eLib.getDataFromExcel("contact",7,3)+jLib.getRandomNumber();
 	
 		HomePage hp=new HomePage(driver);
 		hp.getContactLink().click();

@@ -6,6 +6,10 @@
 			<include name="smokeTest"/>
 		</run>
 	</groups>
+	<listeners>
+		<listener class-name="com.comcast.crm.listenerutiility.ListenerImpClass">
+		</listener>
+	</listeners>
   <test thread-count="5" name="Test">
     <classes>
       <class name="com.comcast.crm.orgtest.CreateOrganizationTest"/>

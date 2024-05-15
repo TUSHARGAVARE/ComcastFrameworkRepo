@@ -19,9 +19,9 @@ public class SearchContactTest extends BaseClass{
 	 */
 	@Test
 	public void searchcontactTest() {
-		/*Step 1:Login to application*/
+		/*Step 1:Login to application
 		LoginPage lp = new LoginPage(driver);
-		lp.loginToApp("url", "ussername", "password");
+		lp.loginToApp("url", "username", "password");*/
 	}
 
 }

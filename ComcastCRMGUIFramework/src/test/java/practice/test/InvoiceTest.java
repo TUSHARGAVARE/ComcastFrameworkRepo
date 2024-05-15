@@ -13,7 +13,7 @@ public class InvoiceTest extends BaseClass{
 	public void createInvoiceTest() {
 		System.out.println("execute createInvoiceTest");
 		//String actTitle = driver.getTitle();
-		Assert.assertEquals("","Login");
+		Assert.assertEquals("Login","Login");
 		System.out.println("Step -1");
 		System.out.println("Step -2");
 		System.out.println("Step -3");

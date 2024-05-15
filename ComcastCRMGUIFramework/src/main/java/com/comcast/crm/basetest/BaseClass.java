@@ -33,9 +33,6 @@ public class BaseClass {
 	public  WebDriver driver = null;
 	public  static WebDriver sdriver = null;
 	
-	
-
-	
 
 	//create object
 			public FileUtility fLib  = new FileUtility();
@@ -45,7 +42,7 @@ public class BaseClass {
 			public	DatabaseUtility dbLib = new DatabaseUtility();
 			
 
-	@BeforeSuite/*(groups= {"smokeTest","regressionTest"})*/
+	@BeforeSuite(groups= {"smokeTest","regressionTest"})
 	public void configBeforeSuite() throws SQLException {
 		System.out.println("====Connect To Database,Report Config=====");
 		dbLib.getDbconnection();
@@ -53,11 +50,13 @@ public class BaseClass {
 	}
 	
 	//@Parameters ("BROWSER")
-	@BeforeClass/*(groups= {"smokeTest","regressionTest"})*/
+	@BeforeClass(groups= {"smokeTest","regressionTest"})
 	public void configBeforeclass(/*String browser*/) throws IOException {
+		
+		
 		System.out.println("===Launch The Browser===");
-		String BROWSER = //browser;
-				fLib.getDataFromPropertiesFile("browser");
+		//String BROWSER = fLib.getDataFromPropertiesFile("browser");
+		String BROWSER = System.getProperty("browser",fLib.getDataFromPropertiesFile("browser"));
 
 		if (BROWSER.equals("chrome")) {
 			driver = new ChromeDriver();
@@ -72,31 +71,33 @@ public class BaseClass {
 		UtilityClassObject.setDriver(driver);
 	}
 	//@Parameters({"username","password"})
-	@BeforeMethod/*(groups= {"smokeTest","regressionTest"})*/
+	@BeforeMethod(groups= {"smokeTest","regressionTest"})
 	public void configBeforeMethod(/*String username,String password*/) throws IOException {
 		System.out.println("===Login To Application===");
-		String URL = fLib.getDataFromPropertiesFile("url");
-		String USERNAME =//username;
-				fLib.getDataFromPropertiesFile("username");
-		String PASSWORD = //password;
-		fLib.getDataFromPropertiesFile("password");
+	//	String URL = fLib.getDataFromPropertiesFile("url");
+	//	String USERNAME =fLib.getDataFromPropertiesFile("username");
+	//	String PASSWORD =fLib.getDataFromPropertiesFile("password");
+		String URL = System.getProperty("url",fLib.getDataFromPropertiesFile("url"));
+				String USERNAME =System.getProperty("username",fLib.getDataFromPropertiesFile("username"));
+						String PASSWORD =System.getProperty("password",fLib.getDataFromPropertiesFile("password"));
 		LoginPage lp = new LoginPage(driver);
 		lp.loginToApp(URL, USERNAME, PASSWORD);
 		
 	}
-	@AfterMethod/*(groups= {"smokeTest","regressionTest"})*/
-	public void configAfterMethod(){
+	@AfterMethod(groups= {"smokeTest","regressionTest"})
+	public void configAfterMethod() throws InterruptedException{
 		System.out.println("===Logout To Application===");	
 		HomePage hp= new HomePage(driver);
+		Thread.sleep(3000);
 		hp.Logout();
 	}
-	@AfterClass/*(groups= {"smokeTest","regressionTest"})*/
+	@AfterClass(groups= {"smokeTest","regressionTest"})
 	public void configAfterclass() throws SQLException {
 		System.out.println("==Close The Browser==");
 		driver.quit();
 	}
 	
-	@AfterSuite/*(groups= {"smokeTest","regressionTest"})*/
+	@AfterSuite(groups= {"smokeTest","regressionTest"})
 	public void configAfterSuite() throws SQLException {
 		System.out.println("=====Close Database,Report Backup======");
 		dbLib.closeDbconnection();

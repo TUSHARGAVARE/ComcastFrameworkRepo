@@ -170,7 +170,7 @@ System.out.println(phoneNumber + " Information is not verified ====>FAIL");
 
 }
 
-	@Test
+	@Test (groups="regressionTest")
 	public void CreateOrganisationWithIndustriesTest() throws IOException, InterruptedException {
 	
 

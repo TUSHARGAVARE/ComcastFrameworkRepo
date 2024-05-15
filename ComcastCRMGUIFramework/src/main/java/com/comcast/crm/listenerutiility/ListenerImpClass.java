@@ -83,7 +83,6 @@ public class ListenerImpClass implements ITestListener,ISuiteListener {
 		//File srcFile = edriver.getScreenshotAs(OutputType.FILE);
 		TakesScreenshot eDriver = (TakesScreenshot) BaseClass.sdriver;
 		String filePath = eDriver.getScreenshotAs(OutputType.BASE64);
-
 		String time = new Date().toString().replace(" ","_").replace(":","_");
 		test.addScreenCaptureFromBase64String(filePath,testName+"_"+time);
 		 test.log(Status.FAIL, result.getMethod().getMethodName()+"==> Failed <===");
