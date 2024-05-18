@@ -1,4 +1,4 @@
-package practice.test;
+package practice;
 /**
  * test class for Contact Module
  * @author Tushar Gavare

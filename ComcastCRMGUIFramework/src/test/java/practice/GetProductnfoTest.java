@@ -1,4 +1,4 @@
-package practice.test;
+package practice;
 
 import java.io.IOException;
 import java.time.Duration;
